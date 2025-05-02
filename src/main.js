@@ -15,6 +15,7 @@ var userObj = {
   lastName: 'Bieliaieva',
   age: 40
 }
+
 console.log(userObj);
 
 /*
@@ -32,9 +33,10 @@ var userObj = {
   lastName: 'Bieliaieva',
   age: 40,
   fullName: function () {
-    return this.firstName + ' ' + this.lastName
+    return userObj.firstName + ' ' + userObj.lastName;
   }
 }
+
 console.log(userObj.fullName()) // John Smith
 
 /*
@@ -47,9 +49,10 @@ console.log(userObj.fullName()) // John Smith
  * При виконанні завдання не використовуйте оператор if, потрібен розв'язок із логічним оператором ||.
  */
 function defUpperStr(str) {
-  var result = (str || 'DEFAULT TEXT').toUpperCase(); 
-  return result ;
+  var result = (str || 'DEFAULT TEXT').toUpperCase();
+  return result;
 }
+
 console.log(defUpperStr('My text')) // MY TEXT
 console.log(defUpperStr())          // DEFAULT TEXT
 
@@ -71,18 +74,14 @@ console.log(defUpperStr())          // DEFAULT TEXT
  */
 function evenFn(n) {
   var result = [];
-  for (var i = 0; i <= n; i++) {
-    if (i === 0) {
-      continue;
-    }
+  for (var i = 1; i <= n; i++) {
     if (i % 2 === 0) {
       result.push(i);
-    } else {
-      continue;
     }
   }
   return result;
 }
+
 console.log(evenFn(10)) // [2, 4, 6, 8, 10]
 console.log(evenFn(15)) // [2, 4, 6, 8, 10, 12, 14]
 console.log(evenFn(20)) // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -139,8 +138,15 @@ console.log(weekFn('2')) // null
  * Використання операторів if, switch - заборонено.
  */
 function ageClassification(n) {
-  return (n < 0) ? null : (n <= 24) ? 'Дитинство' : (n <= 44) ? 'Молодість' : (n <= 65) ? 'Зрілість' : (n <= 75) ? 'Старість' : (n <= 90) ? 'Довголіття' : (n <= 122) ? 'Рекорд' : null;
+  return n < 0 ? null :
+    n <= 24 ? 'Дитинство' :
+      n <= 44 ? 'Молодість' :
+        n <= 65 ? 'Зрілість' :
+          n <= 75 ? 'Старість' :
+            n <= 90 ? 'Довголіття' :
+              n <= 122 ? 'Рекорд' : null;
 }
+
 console.log('    -1 :', ageClassification(-1)) // -1 : null
 console.log('     0 :', ageClassification(0)) // 0 : Дитинство
 console.log('     1 :', ageClassification(1)) // 1 : Дитинство
@@ -198,20 +204,14 @@ function oddFn(n) {
   var result = [];
   var i = 1;
   while (i <= n) {
-    if (i === 0) {
-      i++;
-      continue;
-    }
     if (i % 2 !== 0) {
       result.push(i);
-      i++;
-    } else {
-      i++;
-      continue;
     }
+    i++;
   }
   return result;
 }
+
 console.log(oddFn(10)) // [1, 3, 5, 7, 9]
 console.log(oddFn(15)) // [1, 3, 5, 7, 9, 11, 13, 15]
 console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -230,9 +230,8 @@ console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 function mainFunc(a, b, cb) {
   if (typeof cb === 'function') {
     return cb(a, b);
-  } else {
-    return false;
   }
+  return false;
 }
 
 /*
